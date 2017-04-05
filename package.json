@@ -57,8 +57,6 @@
     "start-js": "node ./scripts/start.js",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && node ./scripts/build.js",
-    "1start": "node ./scripts/start.js",
-    "1build": "node ./scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
