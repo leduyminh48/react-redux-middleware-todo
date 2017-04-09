@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Header, ProgressBar } from './components';
-import { CategoriesSidebar } from './containers';
+import { MainPage } from './containers';
 
 import 'font-awesome/css/font-awesome.css';
 import './App.css';
@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <Header/>
         <ProgressBar percentage={80}/><br/>
-        <CategoriesSidebar/>
+        <MainPage/>
       </div>
     );
   }

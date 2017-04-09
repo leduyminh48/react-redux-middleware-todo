@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import FontAwesome from 'react-fontawesome';
 import './category-item.css';
 
+import { clone } from 'ramda';
+
 export class CategoryItem extends PureComponent {
   constructor(props) {
     super(props);
@@ -10,12 +12,12 @@ export class CategoryItem extends PureComponent {
     this.onClickEdit = this.onClickEdit.bind(this);
     this.onClickAdd = this.onClickAdd.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
+    this.category = clone(this.props.category);
   }
 
   render() {
     const {
       hasSubcategories,
-      category,
       isEditing,
       isSubcategoriesShown
     } = this.props;
@@ -33,7 +35,7 @@ export class CategoryItem extends PureComponent {
           className="ta-category-item__name"
           contentEditable={isEditing}
           ref={el => this.nameElement = el}>
-          {category.name}
+          {this.category.name}
         </span>
         <span className="ta-category-item__icon">
           <FontAwesome name={isEditing ? 'check' : 'pencil'} onClick={this.onClickEdit}/>
@@ -49,30 +51,36 @@ export class CategoryItem extends PureComponent {
   }
 
   onClickToggle() {
-    this.props.onClickToggle(this.props.category);
+    this.props.onClickToggle(this.category);
   }
 
-  onClickEdit() {
-    this.props.onClickEdit(this.props.category);
+  focusOnName() {
     setTimeout(() => { //bug with contenteditable
       this.nameElement.focus();
     }, 0);
   }
 
+  onClickEdit() {
+    if (this.props.isEditing) {
+      this.category.name = this.nameElement.innerText.trim();
+    }
+    this.props.onClickEdit(this.category);
+  }
+
   onClickDelete() {
-    this.props.onClickDelete(this.props.category);
+    this.props.onClickDelete(this.category);
   }
 
   onClickAdd() {
-    this.props.onClickAdd(this.props.category);
+    this.props.onClickAdd(this.category);
   }
 }
 
 CategoryItem.propTypes = {
-  onClickEdit: React.PropTypes.func,
-  onClickAdd: React.PropTypes.func,
-  onClickDelete: React.PropTypes.func,
-  onClickToggle: React.PropTypes.func,
-  isSubcategoriesShown: React.PropTypes.bool,
-  category: React.PropTypes.object
+  onClickEdit: React.PropTypes.func.isRequired,
+  onClickAdd: React.PropTypes.func.isRequired,
+  onClickDelete: React.PropTypes.func.isRequired,
+  onClickToggle: React.PropTypes.func.isRequired,
+  isSubcategoriesShown: React.PropTypes.bool.isRequired,
+  category: React.PropTypes.object.isRequired
 };

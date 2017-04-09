@@ -1,0 +1,11 @@
+.ta-todo-list {
+
+  &__item {
+    border: 0.1rem solid black;
+    border-bottom: none;
+
+    &:last-child {
+      border-bottom: 0.1rem solid black;;
+    }
+  }
+}
