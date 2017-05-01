@@ -70,7 +70,9 @@ export class CategoriesContainer extends Component {
 
     this.onCategoryInputChange = this.onCategoryInputChange.bind(this);
     this.onCategoryInputCancel = this.onCategoryInputCancel.bind(this);
+    this.onClickNameEdit = this.onClickNameEdit.bind(this);
     this.onCategoryNameChanged = this.onCategoryNameChanged.bind(this);
+    this.onClickCategoryToggle = this.onClickCategoryToggle.bind(this);
   }
 
   render() {
@@ -89,10 +91,12 @@ export class CategoriesContainer extends Component {
               placeholder='Enter category title'/>
           </div>
           <CategoryList
+            onClickNameEdit={this.onClickNameEdit}
+            onClickNameSave={this.onCategoryNameChanged}
+            onClickCategoryToggle={this.onClickCategoryToggle}
             onClickAdd={() => {}}
             onClickDelete={() => {}}
             onCategoryAdd={() => {}}
-            onCategoryNameChange={this.onCategoryNameChanged}
             categories={categoriesAsList}/>
       </div>
     )
@@ -110,16 +114,29 @@ export class CategoriesContainer extends Component {
     });
   }
 
-  onCategoryNameChanged(category) {
-    const selectedCategory = this.getSelectedCategory(category);
-
-    selectedCategory.name = category.name;
-
-    this.forceUpdate();
+  onClickNameEdit({ id }) {
+    this.updateCategoriesById(id, { isEditing: true });
   }
 
-  getSelectedCategory(categoryToFind) {
-    return this.state.categories.find(category => category.id === categoryToFind.id);
+  onCategoryNameChanged({ id, name }) {
+    this.updateCategoriesById(id, { name, isEditing: false });
+  }
+
+  onClickCategoryToggle({ id, hideSubcategories }) {
+    this.updateCategoriesById(id, { hideSubcategories: !hideSubcategories });
+  }
+
+  updateCategoriesById(categoryId, changeObj) {
+    const newCategories = this.state.categories.map(category => {
+      if (category.id === categoryId) {
+        return Object.assign({}, category, changeObj);
+      }
+      return Object.assign({}, category);
+    });
+
+    this.setState({
+      categories: newCategories
+    });
   }
 
   formatCategories(categories) {

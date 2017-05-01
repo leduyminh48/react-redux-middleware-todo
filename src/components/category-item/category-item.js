@@ -7,43 +7,53 @@ export class CategoryItem extends PureComponent {
     super(props);
 
     this.onClickToggle = this.onClickToggle.bind(this);
-    this.onClickEdit = this.onClickEdit.bind(this);
+    this.onClickNameEdit = this.onClickNameEdit.bind(this);
+    this.onClickNameSave = this.onClickNameSave.bind(this);
     this.onClickAdd = this.onClickAdd.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
   }
 
   render() {
     const {
-      hasSubcategories,
       isEditing,
       isSubcategoriesShown,
       category
     } = this.props;
 
+    const hasSubcategories = category.subcategories && category.subcategories.length;
+
     return (
       <div className="ta-category-item">
-        {hasSubcategories &&
-          <span className="ta-category-item__icon ta-category-item__icon_toggle">
+        {!!hasSubcategories &&
+        <span className="ta-category-item__icon ta-category-item__icon_toggle">
             <FontAwesome
               name={isSubcategoriesShown ? 'angle-down' : 'angle-right'}
               onClick={this.onClickToggle}/>
           </span>}
 
         {!isEditing &&
-        <span
-          className="ta-category-item__name">
-          {category.name}
-        </span>}
+        <div className="ta-category-item__name-group">
+          <span
+            className="ta-category-item__name">
+            {category.name}
+          </span>
+          <span className="ta-category-item__icon">
+            <FontAwesome name="pencil" onClick={this.onClickNameEdit}/>
+          </span>
+        </div>}
 
         {isEditing &&
-        <input
-          ref={el => this.nameElement = el}
-          type="text"
-          defaultValue={category.name}/>}
+        <div className="ta-category-item__name-group">
+          <input
+            autoFocus
+            ref={el => this.nameElement = el}
+            type="text"
+            defaultValue={category.name}/>
+          <span className="ta-category-item__icon">
+            <FontAwesome name="check" onClick={this.onClickNameSave}/>
+          </span>
+        </div>}
 
-        <span className="ta-category-item__icon">
-          <FontAwesome name={isEditing ? 'check' : 'pencil'} onClick={this.onClickEdit}/>
-        </span>
         <span className="ta-category-item__icon ta-category-item__icon_right">
           <FontAwesome name='trash' onClick={this.onClickDelete}/>
         </span>
@@ -58,34 +68,30 @@ export class CategoryItem extends PureComponent {
     this.props.onClickToggle(this.props.category);
   }
 
-  focusOnName() {
-    setTimeout(() => {
-      this.nameElement && this.nameElement.focus();
-    }, 0);
+  onClickNameEdit() {
+    this.props.onClickNameEdit(this.props.category);
   }
 
-  onClickEdit() {
-    if (this.props.isEditing) {
-      const newCategoryItem = Object.assign({}, this.props.category, {
-        name: this.nameElement.value
-      });
-      this.props.onClickEdit(newCategoryItem);
-    } else {
-      this.props.onClickEdit(this.props.category);
-    }
+  onClickNameSave() {
+    const newCategoryItem = Object.assign({}, this.props.category, {
+      name: this.nameElement.value
+    });
+
+    this.props.onClickNameSave(newCategoryItem);
   }
 
   onClickDelete() {
-    this.props.onClickDelete(this.category);
+    this.props.onClickDelete(this.props.category);
   }
 
   onClickAdd() {
-    this.props.onClickAdd(this.category);
+    this.props.onClickAdd(this.props.category);
   }
 }
 
 CategoryItem.propTypes = {
-  onClickEdit: React.PropTypes.func.isRequired,
+  onClickNameSave: React.PropTypes.func.isRequired,
+  onClickNameEdit: React.PropTypes.func.isRequired,
   onClickAdd: React.PropTypes.func.isRequired,
   onClickDelete: React.PropTypes.func.isRequired,
   onClickToggle: React.PropTypes.func.isRequired,

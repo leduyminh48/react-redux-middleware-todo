@@ -8,6 +8,10 @@
   &__name {
     display: inline-block;
     min-width: 1rem;
+
+    &-group {
+      display: inline-block;
+    }
   }
 
   &__icon {
