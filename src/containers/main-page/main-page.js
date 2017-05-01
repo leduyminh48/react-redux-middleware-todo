@@ -1,115 +1,45 @@
 import React, { Component } from 'react';
-import { CategoryList, InputWithButton, TodoList } from 'components'
+import { InputWithButton, TodoList } from 'components'
+import { CategoriesContainer } from '../'
 import './main-page.css';
 
 export class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newCategoryValue: '',
       newTodoValue:  '',
-      categories: [
-        {
-          name: 'Category 1',
-          id: '1'
-        },
-        {
-          name: 'Category 2',
-          id: '2'
-        },
-        {
-          name: 'Category 3',
-          id: '3',
-          subcategories: [
-            {
-              name: 'Category 3-1',
-              id: '3-1',
-              subcategories: [
-                {
-                  name: 'Category 3-1-1',
-                  id: '3-1-1',
-                  subcategories: [
-                    {
-                      name: 'Category 3-1-1-1',
-                      id: '3-1-1-1',
-                    },
-                    {
-                      name: 'Category 3-1-1-2',
-                      id: '3-1-1-2'
-                    }
-                  ]
-                },
-                {
-                  name: 'Category 3-1-2',
-                  id: '3-1-2'
-                }
-              ]
-            },
-            {
-              name: 'Category 3-2',
-              id: '3-2',
-            },
-            {
-              name: 'Category 3-3',
-              id: '3-3',
-              subcategories: [
-                {
-                  name: 'Category 3-3-1'
-                },
-                {
-                  name: 'Category 3-3-2'
-                }
-              ]
-            }
-          ]
-        }
-      ],
       todos: [
         {
+          id: 1,
           description: 'haha'
         },
         {
+          id: 2,
           description: 'haha'
         },
         {
+          id: 3,
           description: 'haha'
         }
       ]
     };
 
-    this.onCategoryInputChange = this.onCategoryInputChange.bind(this);
-    this.onCategoryInputCancel = this.onCategoryInputCancel.bind(this);
-    this.onCategoryNameChanged = this.onCategoryNameChanged.bind(this);
     this.onTodoInputChange = this.onTodoInputChange.bind(this);
     this.onTodoInputCancel = this.onTodoInputCancel.bind(this);
   }
 
   render() {
-    const { categories, todos } = this.state;
+    const { todos, newTodoValue } = this.state;
 
     return (
       <div className="ta-main-page">
         <div className="ta-main-page__container_left">
-          <div className="ta-main-page__input">
-            <InputWithButton
-              value={this.state.newCategoryValue}
-              onInputChange={this.onCategoryInputChange}
-              onCancelClick={this.onCategoryInputCancel}
-              btnText='Add'
-              onBtnClick={() => {}}
-              placeholder='Enter category title'/>
-          </div>
-          <CategoryList
-            onClickAdd={() => {}}
-            onClickDelete={() => {}}
-            onCategoryAdd={() => {}}
-            onCategoryNameChange={this.onCategoryNameChanged}
-            categories={categories}/>
+          <CategoriesContainer/>
         </div>
         <div className="ta-main-page__container_right">
           <div className="ta-main-page__input ta-main-page__input_right">
             <InputWithButton
-              value={this.state.newTodoValue}
+              value={newTodoValue}
               onInputChange={this.onTodoInputChange}
               onCancelClick={this.onTodoInputCancel}
               btnText='Add'
@@ -135,23 +65,6 @@ export class MainPage extends Component {
     this.setState({
       newTodoValue: ''
     });
-  }
-
-  onCategoryInputChange(e) {
-    this.setState({
-      newCategoryValue: e.target.value
-    });
-  }
-
-  onCategoryInputCancel() {
-    this.setState({
-      newCategoryValue: ''
-    });
-  }
-
-  onCategoryNameChanged(category) {
-    //will be replace with server request in the future
-    console.log(category.id);
   }
 }
 

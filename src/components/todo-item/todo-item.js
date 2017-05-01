@@ -27,7 +27,7 @@ export class TodoItem extends PureComponent {
   }
 
   onClickEdit() {
-    this.props.onClickDone(this.props.todo);
+    this.props.onClickEdit(this.props.todo);
   }
 }
 

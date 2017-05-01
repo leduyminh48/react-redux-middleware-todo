@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { CategoryItem } from '../'
 import './category-list.css';
-import { clone } from 'ramda';
 
 export class CategoryList extends Component {
   categoryElements = {};
@@ -11,19 +10,21 @@ export class CategoryList extends Component {
 
     this.toggleSubcategories = this.toggleSubcategories.bind(this);
     this.editCategoryName = this.editCategoryName.bind(this);
-    this.categories = clone(this.props.categories);
+    this.state = {
+      categories: this.props.categories.slice(0)
+    }
   }
 
   render() {
-
     const { onClickAdd, onClickDelete, onCategoryNameChange, onCategoryAdd } = this.props;
+    const { categories } = this.state;
 
     return (
       <ul className="ta-category-list">
         {
-          this.categories.map((category, idx) => {
+          categories.map((category, idx) => {
             const hasSubcategories = category.subcategories &&
-              category.subcategories.length;
+              !!category.subcategories.length;
             return (
               <li
                 className={`ta-category-list__item ${idx === 0 ? 'ta-category-list__item_first' : ''}`}
@@ -55,24 +56,29 @@ export class CategoryList extends Component {
 
   editCategoryName(category) {
     const { onCategoryNameChange } = this.props;
-    const selectedCatgory = this.getSelectedCategory(category);
-    selectedCatgory.isEditing = !selectedCatgory.isEditing;
-    this.categoryElements[category.id].focusOnName();
-    if (!selectedCatgory.isEditing) {
-      onCategoryNameChange(selectedCatgory);
+    const selectedCategory = this.getSelectedCategory(category);
+
+    selectedCategory.isEditing = !selectedCategory.isEditing;
+
+    if (!selectedCategory.isEditing) {
+      onCategoryNameChange(category);
+    } else {
+      this.categoryElements[category.id].focusOnName();
     }
+
     this.forceUpdate();
   }
 
   toggleSubcategories(category) {
-    const selectedCatgory = this.getSelectedCategory(category);
-    selectedCatgory.hideSubcategories = !selectedCatgory.hideSubcategories;
+    const selectedCategory = this.getSelectedCategory(category);
+    selectedCategory.hideSubcategories = !selectedCategory.hideSubcategories;
     this.forceUpdate();
   }
 
   getSelectedCategory(category) {
-    return this.categories.find(el => el.id === category.id);
+    return this.state.categories.find(el => el.id === category.id);
   }
+
 }
 
 CategoryList.propTypes = {
