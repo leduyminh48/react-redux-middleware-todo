@@ -1,5 +1,7 @@
 .ta-main-page {
-  display: flex;
+  &__body {
+    display: flex;
+  }
 
   &__input {
     margin-bottom: 3rem;

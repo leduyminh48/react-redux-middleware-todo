@@ -5,6 +5,10 @@
   border: 1px solid black;
   border-top: none;
 
+  &_active {
+    background-color: #a7b7b7;
+  }
+
   &__name {
     display: inline-block;
     min-width: 1rem;

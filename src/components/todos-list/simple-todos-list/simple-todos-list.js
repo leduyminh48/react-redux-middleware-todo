@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
-import { TodoItem } from '../'
+import { TodoItem } from 'components';
 
-import './todo-list.css'
-
-export class TodoList extends PureComponent {
+export class SimpleTodosList extends PureComponent {
   render() {
     const { onClickEdit, onClickDone, todos } = this.props;
 
@@ -26,7 +24,7 @@ export class TodoList extends PureComponent {
   }
 }
 
-TodoList.propTypes = {
+SimpleTodosList.propTypes = {
   onClickEdit: React.PropTypes.func,
   onClickDone: React.PropTypes.func,
   todos: React.PropTypes.array

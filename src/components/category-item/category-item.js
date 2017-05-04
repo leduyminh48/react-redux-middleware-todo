@@ -11,27 +11,31 @@ export class CategoryItem extends PureComponent {
     this.onClickNameSave = this.onClickNameSave.bind(this);
     this.onClickAdd = this.onClickAdd.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
+    this.onClickItem = this.onClickItem.bind(this);
   }
 
   render() {
     const {
-      isEditing,
-      isSubcategoriesShown,
+      isActive,
       category
     } = this.props;
 
     const hasSubcategories = category.subcategories && category.subcategories.length;
 
     return (
-      <div className="ta-category-item">
+      <div className={`
+            ta-category-item
+            ${ isActive ? 'ta-category-item_active' : ''}`}
+           onClick={this.onClickItem}>
+
         {!!hasSubcategories &&
         <span className="ta-category-item__icon ta-category-item__icon_toggle">
-            <FontAwesome
-              name={isSubcategoriesShown ? 'angle-down' : 'angle-right'}
-              onClick={this.onClickToggle}/>
-          </span>}
+          <FontAwesome
+            name={category.hideSubcategories ? 'angle-right' : 'angle-down'}
+            onClick={this.onClickToggle}/>
+        </span>}
 
-        {!isEditing &&
+        {!category.isEditing &&
         <div className="ta-category-item__name-group">
           <span
             className="ta-category-item__name">
@@ -42,7 +46,7 @@ export class CategoryItem extends PureComponent {
           </span>
         </div>}
 
-        {isEditing &&
+        {category.isEditing &&
         <div className="ta-category-item__name-group">
           <input
             autoFocus
@@ -64,27 +68,38 @@ export class CategoryItem extends PureComponent {
     )
   }
 
-  onClickToggle() {
-    this.props.onClickToggle(this.props.category);
+  onClickItem(e) {
+    e.stopPropagation();
+    this.props.onClickItem(this.props.category);
   }
 
-  onClickNameEdit() {
+  onClickToggle(e) {
+    e.stopPropagation();
+    this.props.onClickCategoryToggle(this.props.category);
+  }
+
+  onClickNameEdit(e) {
+    e.stopPropagation();
     this.props.onClickNameEdit(this.props.category);
   }
 
-  onClickNameSave() {
-    const newCategoryItem = Object.assign({}, this.props.category, {
+  onClickNameSave(e) {
+    e.stopPropagation();
+    const newCategoryItem = {
+      ...this.props.category,
       name: this.nameElement.value
-    });
+    };
 
     this.props.onClickNameSave(newCategoryItem);
   }
 
-  onClickDelete() {
+  onClickDelete(e) {
+    e.stopPropagation();
     this.props.onClickDelete(this.props.category);
   }
 
-  onClickAdd() {
+  onClickAdd(e) {
+    e.stopPropagation();
     this.props.onClickAdd(this.props.category);
   }
 }
@@ -94,7 +109,7 @@ CategoryItem.propTypes = {
   onClickNameEdit: React.PropTypes.func.isRequired,
   onClickAdd: React.PropTypes.func.isRequired,
   onClickDelete: React.PropTypes.func.isRequired,
-  onClickToggle: React.PropTypes.func.isRequired,
-  isSubcategoriesShown: React.PropTypes.bool.isRequired,
+  onClickCategoryToggle: React.PropTypes.func.isRequired,
+  onClickItem: React.PropTypes.func.isRequired,
   category: React.PropTypes.object.isRequired
 };

@@ -7,4 +7,7 @@ export * from './input';
 export * from './header';
 export * from './input-with-button';
 export * from './todo-item';
-export * from './todo-list';
+export * from './todos-list';
+export * from './todos-filter';
+export * from './add-root-category';
+export * from './add-todo';
