@@ -3,10 +3,14 @@ import { categories } from './categories';
 import { todos } from './todos';
 import { addCategoryInputValue } from './addCategoryInputValue';
 import { addTodoInputValue } from './addTodoInputValue';
+import { showDoneTodos } from './showDoneTodos';
+import { todosFilter } from './todosFilter';
 
 export const todoApp = combineReducers({
   categories,
   todos,
   addCategoryInputValue,
-  addTodoInputValue
+  addTodoInputValue,
+  showDoneTodos,
+  todosFilter
 });

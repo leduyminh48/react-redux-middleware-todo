@@ -15,7 +15,7 @@ export class TodoItem extends PureComponent {
 
     return (
       <div className="ta-todo-item">
-        <input type="checkbox" onClick={this.onClickDone}/>
+        <input type="checkbox" onChange={this.onClickDone} checked={todo.isDone}/>
         <div className="ta-todo-item__text">{todo.description}</div>
         <FontAwesome name='pencil' onClick={this.onClickEdit}/>
       </div>

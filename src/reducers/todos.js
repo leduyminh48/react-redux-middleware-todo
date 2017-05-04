@@ -41,22 +41,22 @@ const todo = (state, { type, payload }) => {
   }
 };
 
-export const todos = (state = mockCategories, action) => {
-  switch (action.type) {
+export const todos = (state = mockCategories, { type, payload }) => {
+  switch (type) {
 
     case TODO_ACTIONS.ADD_TODO:
       return [
         ...state,
-        todo(undefined, action)
+        todo(undefined, { type, payload })
       ];
 
     case TODO_ACTIONS.TOGGLE_DONE_TODO:
     case TODO_ACTIONS.UPDATE_TODO:
       return state.map(item => {
-        if (item.id !== action.payload.id) {
+        if (item.id !== payload.id) {
           return item;
         }
-        return todo(item, action)
+        return todo(item, { type, payload })
       });
 
     default:

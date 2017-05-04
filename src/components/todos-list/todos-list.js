@@ -8,10 +8,15 @@ import {
 
 import './todos-list.css';
 
-
-const mapStateToProps = ({ todos, showDone }, { categoryId }) => {
+const mapStateToProps = ({ todos, showDoneTodos }, { categoryId }) => {
+  const visibleTodos = todos
+    .filter(todo => {
+      const belongToCurrentCategory = todo.categoryId === categoryId;
+      const visibleWhenDone = todo.isDone && showDoneTodos;
+      return belongToCurrentCategory && (visibleWhenDone || !todo.isDone);
+    });
   return {
-    todos: todos.filter(todo => todo.categoryId === categoryId)
+    todos: visibleTodos
   };
 };
 

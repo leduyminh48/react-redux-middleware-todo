@@ -43,4 +43,5 @@ export class Input extends PureComponent {
 Input.propTypes = {
   value: React.PropTypes.string.isRequired,
   onChange: React.PropTypes.func.isRequired,
+  onCancelClick: React.PropTypes.func.isRequired,
 };
