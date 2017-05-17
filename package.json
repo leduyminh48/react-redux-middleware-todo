@@ -11,7 +11,8 @@
     "react-fontawesome": "^1.5.0",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-form": "^6.7.0"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",

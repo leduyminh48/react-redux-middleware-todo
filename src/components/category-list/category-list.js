@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export const CategoriesList =  connect(
+export const CategoriesList = connect(
   mapStateToProps,
   mapDispatchToProps
 )(RecursiveCategoryList);
@@ -49,7 +49,8 @@ export const CategoriesList =  connect(
 function formatCategories(categories) { //TODO: use Immutable.js
   const rootCategories = categories
     .filter(category => !category.parentId)
-    .map(category => ({...category})); //clone
+    .map(category => ({ ...category })); //clone
+
   return putSubcategoriesIntoParents(rootCategories, categories);
 }
 
@@ -59,7 +60,7 @@ function putSubcategoriesIntoParents(rootCategories, categories) {
       ...rootCategory,
       subcategories: categories
         .filter(category => category.parentId === rootCategory.id)
-        .map(category => ({...category})) //clone
+        .map(category => ({ ...category })) //clone
     }
   });
 

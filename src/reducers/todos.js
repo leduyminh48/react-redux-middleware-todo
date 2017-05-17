@@ -2,18 +2,18 @@ import { TODO_ACTIONS } from 'actions'
 
 const mockCategories = [
   {
-    id: 1,
-    description: 'haha',
+    id: '1',
+    name: 'todo 1',
     categoryId: '3'
   },
   {
-    id: 2,
-    description: 'haha',
+    id: '2',
+    name: 'todo 2',
     categoryId: '3'
   },
   {
-    id: 3,
-    description: 'haha',
+    id: '3',
+    name: 'todo 3',
     categoryId: '3'
   }
 ];

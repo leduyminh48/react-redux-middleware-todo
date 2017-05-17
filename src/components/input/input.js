@@ -18,6 +18,7 @@ export class Input extends PureComponent {
         <FontAwesome
           name="times"/>
       </div>;
+
     return (
       <div className="ta-input__container">
         <input

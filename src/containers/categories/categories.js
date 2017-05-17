@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import { CategoriesList, AddRootCategory } from 'components'
+import { getCategoryRoute } from 'routes';
+
 import './categories.css';
 
 export class Categories extends PureComponent {
@@ -26,6 +28,6 @@ export class Categories extends PureComponent {
   }
 
   onClickItem(category) {
-    this.props.history.push(`/categories/${category.id}`);
+    this.props.history.push(getCategoryRoute(category.id));
   }
 }

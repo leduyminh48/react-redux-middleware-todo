@@ -6,11 +6,15 @@ import { addTodoInputValue } from './addTodoInputValue';
 import { showDoneTodos } from './showDoneTodos';
 import { todosFilter } from './todosFilter';
 
+import { reducer as form } from 'redux-form';
+
+
 export const todoApp = combineReducers({
   categories,
   todos,
   addCategoryInputValue,
   addTodoInputValue,
   showDoneTodos,
-  todosFilter
+  todosFilter,
+  form
 });

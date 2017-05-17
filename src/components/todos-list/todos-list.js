@@ -8,12 +8,15 @@ import {
 
 import './todos-list.css';
 
-const mapStateToProps = ({ todos, showDoneTodos }, { categoryId }) => {
-  const visibleTodos = todos
+const mapStateToProps = ({ todos, showDoneTodos, todosFilter = '' }, { categoryId }) => {
+  let visibleTodos = todos
     .filter(todo => {
       const belongToCurrentCategory = todo.categoryId === categoryId;
       const visibleWhenDone = todo.isDone && showDoneTodos;
       return belongToCurrentCategory && (visibleWhenDone || !todo.isDone);
+    })
+    .filter(({description = '', name = ''}) => {
+      return description.match(todosFilter) || name.match(todosFilter)
     });
   return {
     todos: visibleTodos
@@ -24,8 +27,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onClickDone: ({ id }) => {
       dispatch(toggleDoneTodo(id));
-    },
-    onClickEdit: () => {}
+    }
   };
 };
 

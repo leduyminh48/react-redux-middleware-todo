@@ -14,8 +14,8 @@ const mapStateToProps = ({ addTodoInputValue }) => {
 
 const mapDispatchToProps = (dispatch, { categoryId }) => {
   return {
-    onBtnClick: (description) => {
-      dispatch(addTodo({ description, categoryId }));
+    onBtnClick: (name) => {
+      dispatch(addTodo({ name, categoryId }));
       dispatch(updateAddTodoInputValue(''));
     },
     onInputChange: (e) => {

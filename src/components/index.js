@@ -11,3 +11,4 @@ export * from './todos-list';
 export * from './todos-filter';
 export * from './add-root-category';
 export * from './add-todo';
+export * from './edit-todo-form';

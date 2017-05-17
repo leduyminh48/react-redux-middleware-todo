@@ -1,4 +1,4 @@
-export const CATEGORY_ACTIONS = {
+const CATEGORY_ACTIONS = {
   ADD_CATEGORY: 'ADD_CATEGORY',
   ADD_SUBCATEGORY: 'ADD_SUBCATEGORY',
   TOGGLE_SUBCATEGORIES: 'TOGGLE_SUBCATEGORIES',
@@ -8,7 +8,7 @@ export const CATEGORY_ACTIONS = {
   UPDATE_ADD_CATEGORY_VALUE: 'UPDATE_ADD_CATEGORY_VALUE'
 };
 
-export const addRootCategory = ({ name }) => ({
+const addRootCategory = ({ name }) => ({
   type: CATEGORY_ACTIONS.ADD_CATEGORY,
   payload: {
     id: `${new Date().getTime()}`,
@@ -17,7 +17,7 @@ export const addRootCategory = ({ name }) => ({
   }
 });
 
-export const addSubcategory = ({ name, parentId }) => ({
+const addSubcategory = ({ name, parentId }) => ({
   type: CATEGORY_ACTIONS.ADD_SUBCATEGORY,
   payload: {
     id: `${new Date().getTime()}`,
@@ -27,27 +27,38 @@ export const addSubcategory = ({ name, parentId }) => ({
   }
 });
 
-export const toggleSubcategories = (id) => ({
+const toggleSubcategories = (id) => ({
   type: CATEGORY_ACTIONS.TOGGLE_SUBCATEGORIES,
   payload: { id }
 });
 
-export const enableEditingCategory = (id) => ({
+const enableEditingCategory = (id) => ({
   type: CATEGORY_ACTIONS.ENABLE_EDITING_CATEGORY,
   payload: { id }
 });
 
-export const updateCategoryName = ({ id, name })  => ({
+const updateCategoryName = ({ id, name })  => ({
   type: CATEGORY_ACTIONS.UPDATE_CATEGORY_NAME,
   payload: { id, name }
 });
 
-export const deleteCategory = (id)  => ({
+const deleteCategory = (id)  => ({
   type: CATEGORY_ACTIONS.DELETE_CATEGORY,
   payload: { id }
 });
 
-export const updateAddCategoryInputValue = (value) => ({
+const updateAddCategoryInputValue = (value) => ({
   type: CATEGORY_ACTIONS.UPDATE_ADD_CATEGORY_VALUE,
   payload: { value }
 });
+
+export {
+  CATEGORY_ACTIONS,
+  addRootCategory,
+  addSubcategory,
+  toggleSubcategories,
+  enableEditingCategory,
+  updateCategoryName,
+  deleteCategory,
+  updateAddCategoryInputValue
+}

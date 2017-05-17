@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CategoryItem } from 'components/category-item';
+import { CategoryItem, CategoryItemForAssigning } from 'components/category-item';
 
 export class RecursiveCategoryList extends Component {
   render() {
@@ -23,7 +23,7 @@ export class RecursiveCategoryList extends Component {
                 <CategoryItem
                   {...this.props}
                   isActive={category.id === activeCategory}
-                  category={category} />
+                  category={category}/>
                 { hasSubcategories && !category.hideSubcategories &&
                 <RecursiveCategoryList
                   {...this.props}
