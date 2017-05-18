@@ -15,7 +15,7 @@ export class TodoItem extends PureComponent {
 
     return (
       <div className="ta-todo-item">
-        <input type="checkbox" onChange={this.onClickDone} checked={todo.isDone}/>
+        <input type="checkbox" onChange={this.onClickDone} defaultChecked={todo.isDone}/>
         <div className="ta-todo-item__text">
           <p>{todo.name}</p>
           <p className="ta-todo-item__text_blur">{todo.description}</p>

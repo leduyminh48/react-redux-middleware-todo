@@ -16,7 +16,6 @@ export class CategoryItem extends PureComponent {
 
   render() {
     const {
-      forAssigning,
       isActive,
       category
     } = this.props;

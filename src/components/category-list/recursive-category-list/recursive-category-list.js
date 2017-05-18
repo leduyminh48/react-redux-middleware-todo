@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { CategoryItem, CategoryItemForAssigning } from 'components/category-item';
 
 export class RecursiveCategoryList extends Component {
   render() {
     const {
       activeCategory,
-      categories
+      categories,
+      itemComponent: CategoryItem
     } = this.props;
     return (
       <ul className="ta-category-list">
@@ -22,6 +22,7 @@ export class RecursiveCategoryList extends Component {
                 key={category.id}>
                 <CategoryItem
                   {...this.props}
+                  categories={null}
                   isActive={category.id === activeCategory}
                   category={category}/>
                 { hasSubcategories && !category.hideSubcategories &&
@@ -39,10 +40,6 @@ export class RecursiveCategoryList extends Component {
 
 RecursiveCategoryList.propTypes = {
   categories: React.PropTypes.array.isRequired,
-  onClickCategoryToggle: React.PropTypes.func.isRequired,
-  onClickNameSave: React.PropTypes.func.isRequired,
-  onClickNameEdit: React.PropTypes.func.isRequired,
-  onClickAdd: React.PropTypes.func.isRequired,
-  onClickDelete: React.PropTypes.func.isRequired,
-  onClickItem: React.PropTypes.func.isRequired
+  activeCategory: React.PropTypes.string.isRequired,
+  itemComponent: React.PropTypes.func.isRequired
 };

@@ -35,8 +35,9 @@ const mapDispatchToProps = (dispatch, { todoId, afterSubmit }) => ({
 });
 
 const mapStateToProps = ({ todos }, { todoId }) => {
+  const { name, description, isDone } = todos.find(todo => todo.id === todoId);
   return {
-    initialValues: todos.find(todo => todo.id === todoId)
+    initialValues: { name, description, isDone }
   }
 };
 

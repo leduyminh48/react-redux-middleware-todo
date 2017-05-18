@@ -3,10 +3,15 @@ import FontAwesome from 'react-fontawesome';
 import './category-item.css';
 
 export class CategoryItemForAssigning extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.onClickAssigningBtn = this.onClickAssigningBtn.bind(this);
+  }
+
   render() {
     const {
-      isCurrentCategory,
-      onClickAssigningBtn,
+      isActive,
       category
     } = this.props;
 
@@ -17,18 +22,24 @@ export class CategoryItemForAssigning extends PureComponent {
             className="ta-category-item__name">
             {category.name}
           </span>
-          {!isCurrentCategory &&
+          {!isActive &&
           <span className="ta-category-item__icon">
-            <FontAwesome name="mail-reply" onClick={onClickAssigningBtn}/>
+            <FontAwesome name="mail-reply" onClick={this.onClickAssigningBtn}/>
           </span>}
         </div>
       </div>
     )
   }
+
+  onClickAssigningBtn() {
+    const {onClickAssigningBtn, category: { id }} = this.props;
+
+    onClickAssigningBtn(id);
+  }
 }
 
 CategoryItemForAssigning.propTypes = {
   category: React.PropTypes.object.isRequired,
-  isCurrentCategory: React.PropTypes.bool.isRequired,
+  isActive: React.PropTypes.bool.isRequired,
   onClickAssigningBtn: React.PropTypes.func.isRequired,
 };
