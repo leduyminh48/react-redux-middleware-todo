@@ -7,6 +7,7 @@ export class InputWithButton extends PureComponent {
     super(props);
 
     this.onBtnClick = this.onBtnClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   render() {
@@ -17,6 +18,7 @@ export class InputWithButton extends PureComponent {
           value={value}
           onCancelClick={onCancelClick}
           onChange={onInputChange}
+          onKeyDown={this.onKeyDown}
           placeholder={placeholder}/>
         <button
           disabled={!value}
@@ -31,6 +33,12 @@ export class InputWithButton extends PureComponent {
   onBtnClick() {
     const { value, onBtnClick } = this.props;
     onBtnClick(value);
+  }
+
+  onKeyDown(e) {
+    if (e.keyCode === 13) {
+      this.onBtnClick();
+    }
   }
 }
 

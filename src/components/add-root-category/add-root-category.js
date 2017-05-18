@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export const AddRootCategory =  connect(
+export const AddRootCategory = connect(
   mapStateToProps,
   mapDispatchToProps
 )(InputWithButton);

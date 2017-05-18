@@ -10,7 +10,7 @@ export class Input extends PureComponent {
   }
 
   render() {
-    const { placeholder, value, onChange } = this.props;
+    const { placeholder, value, onChange, onKeyDown } = this.props;
     const cancelButton = value &&
       <div
         className="ta-input__icon"
@@ -25,6 +25,7 @@ export class Input extends PureComponent {
           className="ta-input"
           type="text"
           onChange={onChange}
+          onKeyDown={onKeyDown}
           placeholder={placeholder}
           ref={el => this.inputElement = el}
           value={value}/>
@@ -45,4 +46,5 @@ Input.propTypes = {
   value: React.PropTypes.string.isRequired,
   onChange: React.PropTypes.func.isRequired,
   onCancelClick: React.PropTypes.func.isRequired,
+  onKeyDown: React.PropTypes.func.isRequired,
 };
