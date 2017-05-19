@@ -17,7 +17,11 @@ const SimpleTodosFilter = (props) => {
       <input type="checkbox" onChange={onShowDoneChange} checked={showDoneTodos}/>
       <label
         className="ta-header__label">Show done</label>
-      <Input value={todoSearchValue} onChange={onTodoSearchChange} onCancelClick={onCancelClick}/>
+      <Input
+        value={todoSearchValue}
+        onChange={onTodoSearchChange}
+        onCancelClick={onCancelClick}
+      />
     </div>
   )
 };

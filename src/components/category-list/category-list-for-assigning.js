@@ -14,11 +14,7 @@ const mapStateToProps = ({ categories }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
 export const CategoriesListForAssigning = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(RecursiveCategoryList);
