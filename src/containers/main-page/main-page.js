@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-import { Header, ProgressBar, UndoRedo } from 'components'
+import { Header, ProgressBar } from 'components'
 import { Categories, CategoriesForAssigning, Todos, EditTodo } from '../'
 import { ROUTES } from 'routes';
 import './main-page.css';
@@ -12,7 +12,6 @@ export class MainPage extends Component {
     return (
       <div className="ta-main-page">
         <Header/>
-        <UndoRedo/>
         <ProgressBar percentage={80}/><br/>
         <div className="ta-main-page__body">
           <div className="ta-main-page__container_left">
@@ -28,7 +27,3 @@ export class MainPage extends Component {
     )
   }
 }
-
-MainPage.propTypes = {
-  categories: React.PropTypes.array
-};

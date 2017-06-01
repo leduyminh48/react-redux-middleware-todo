@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class RecursiveCategoryList extends Component {
   render() {
@@ -39,7 +40,7 @@ export class RecursiveCategoryList extends Component {
 }
 
 RecursiveCategoryList.propTypes = {
-  categories: React.PropTypes.array.isRequired,
-  activeCategory: React.PropTypes.string.isRequired,
-  itemComponent: React.PropTypes.func.isRequired
+  categories: PropTypes.array.isRequired,
+  activeCategory: PropTypes.string.isRequired,
+  itemComponent: PropTypes.func.isRequired
 };

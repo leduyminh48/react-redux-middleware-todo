@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class List extends Component {
   render() {
@@ -13,5 +14,5 @@ export class List extends Component {
 }
 
 List.propTypes = {
-  list: React.PropTypes.array.isRequired
+  list: PropTypes.array.isRequired
 };

@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import './input-with-button.css';
 import  { Input } from '../'
 
@@ -43,9 +45,9 @@ export class InputWithButton extends PureComponent {
 }
 
 InputWithButton.propTypes = {
-  onInputChange: React.PropTypes.func.isRequired,
-  onBtnClick: React.PropTypes.func.isRequired,
-  btnText: React.PropTypes.string.isRequired,
-  placeholder: React.PropTypes.string.isRequired,
-  value: React.PropTypes.string.isRequired
+  onInputChange: PropTypes.func.isRequired,
+  onBtnClick: PropTypes.func.isRequired,
+  btnText: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
 };

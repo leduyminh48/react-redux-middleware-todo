@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import FontAwesome from 'react-fontawesome';
 import './todo-item.css';
 
@@ -35,7 +37,7 @@ export class TodoItem extends PureComponent {
 }
 
 TodoItem.propTypes = {
-  onClickEdit: React.PropTypes.func.isRequired,
-  onClickDone: React.PropTypes.func.isRequired,
-  todo: React.PropTypes.object
+  onClickEdit: PropTypes.func.isRequired,
+  onClickDone: PropTypes.func.isRequired,
+  todo: PropTypes.object
 };

@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import FontAwesome from 'react-fontawesome';
 import './category-item.css';
 
@@ -39,7 +41,7 @@ export class CategoryItemForAssigning extends PureComponent {
 }
 
 CategoryItemForAssigning.propTypes = {
-  category: React.PropTypes.object.isRequired,
-  isActive: React.PropTypes.bool.isRequired,
-  onClickAssigningBtn: React.PropTypes.func.isRequired,
+  category: PropTypes.object.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onClickAssigningBtn: PropTypes.func.isRequired,
 };

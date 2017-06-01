@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import './input.css';
 import FontAwesome from 'react-fontawesome';
 
@@ -43,8 +45,8 @@ export class Input extends PureComponent {
 }
 
 Input.propTypes = {
-  value: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  onCancelClick: React.PropTypes.func.isRequired,
-  onKeyDown: React.PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onCancelClick: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func.isRequired,
 };

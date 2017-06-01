@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.css';
 import logo from '../../assets/images/logo.svg'
-import { TodosFilter } from '../'
+import { TodosFilter, UndoRedo } from '../'
 
 export const Header = () => {
   return (
@@ -16,7 +16,10 @@ export const Header = () => {
           <strong className="ta-logo__text">To-Do List</strong>
         </a>
       </h1>
-      <TodosFilter/>
+      <div className="ta-header__filter-group">
+        <TodosFilter/>
+        <UndoRedo/>
+      </div>
     </div>
   )
 };

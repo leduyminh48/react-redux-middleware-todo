@@ -21,6 +21,7 @@ const SimpleTodosFilter = (props) => {
         value={todoSearchValue}
         onChange={onTodoSearchChange}
         onCancelClick={onCancelClick}
+        onKeyDown={() => {}}
       />
     </div>
   )

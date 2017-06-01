@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import './progress-bar.css';
 
@@ -16,7 +18,7 @@ class ProgressBar extends Component {
 }
 
 ProgressBar.propTypes = {
-  percentage: React.PropTypes.number.isRequired
+  percentage: PropTypes.number.isRequired
 };
 
 const mapStateToProps = ({ todos,categories }) => ({

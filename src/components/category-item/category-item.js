@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import FontAwesome from 'react-fontawesome';
 import './category-item.css';
 
@@ -105,11 +107,11 @@ export class CategoryItem extends PureComponent {
 }
 
 CategoryItem.propTypes = {
-  onClickNameSave: React.PropTypes.func.isRequired,
-  onClickNameEdit: React.PropTypes.func.isRequired,
-  onClickAdd: React.PropTypes.func.isRequired,
-  onClickDelete: React.PropTypes.func.isRequired,
-  onClickCategoryToggle: React.PropTypes.func.isRequired,
-  onClickItem: React.PropTypes.func.isRequired,
-  category: React.PropTypes.object.isRequired
+  onClickNameSave: PropTypes.func.isRequired,
+  onClickNameEdit: PropTypes.func.isRequired,
+  onClickAdd: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+  onClickCategoryToggle: PropTypes.func.isRequired,
+  onClickItem: PropTypes.func.isRequired,
+  category: PropTypes.object.isRequired
 };
