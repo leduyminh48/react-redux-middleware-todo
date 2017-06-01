@@ -1,4 +1,4 @@
-import { CATEGORY_ACTIONS } from 'actions'
+import { CATEGORY_ACTIONS,  UNDO_REDO_ACTIONS } from 'actions'
 
 const mockCategories = [
   {
@@ -62,7 +62,6 @@ const mockCategories = [
 
 const category = (state, { type, payload }) => {
   switch (type) {
-
     case CATEGORY_ACTIONS.ADD_CATEGORY:
     case CATEGORY_ACTIONS.ADD_SUBCATEGORY:
       return payload;
@@ -93,6 +92,10 @@ const category = (state, { type, payload }) => {
 
 export const categories = (state = mockCategories, action) => {
   switch (action.type) {
+
+    case UNDO_REDO_ACTIONS.RESET:
+      if (action.payload.categories) { return action.payload.categories; }
+      return state;
 
     case CATEGORY_ACTIONS.ADD_SUBCATEGORY:
     case CATEGORY_ACTIONS.ADD_CATEGORY:

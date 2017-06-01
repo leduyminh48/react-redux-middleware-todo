@@ -1,4 +1,4 @@
-import { TODO_ACTIONS } from 'actions'
+import { TODO_ACTIONS, UNDO_REDO_ACTIONS } from 'actions'
 
 const mockCategories = [
   {
@@ -58,6 +58,10 @@ export const todos = (state = mockCategories, { type, payload }) => {
         }
         return todo(item, { type, payload })
       });
+
+    case UNDO_REDO_ACTIONS.RESET:
+      if (payload.todos) { return payload.todos; }
+      return state;
 
     default:
       return state;
