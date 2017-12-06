@@ -1,0 +1,26 @@
+.ta-main-page {
+  &__body {
+    display: flex;
+  }
+
+  &__input {
+    margin-bottom: 3rem;
+
+    &_right {
+      text-align: right;
+    }
+  }
+
+  &__container {
+
+    &_left {
+      flex-grow: 1;
+      max-width: 30%;
+    }
+
+    &_right {
+      padding-left: 1rem;
+      flex-grow: 10;
+    }
+  }
+}

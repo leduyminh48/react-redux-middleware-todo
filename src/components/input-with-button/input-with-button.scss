@@ -1,0 +1,27 @@
+.ta-input-w-btn {
+  display: inline-block;
+
+  &__input {
+    height: 2.5rem;
+    border: 0.1rem solid black;
+    border-bottom-left-radius: 1.2rem;
+    border-top-left-radius: 1.2rem;
+    font-size: 1.8rem;
+    padding: 0.1rem 1rem;
+  }
+
+  &__btn {
+    border: 0.1rem solid black;
+    border-bottom-right-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+    background: #ddd;
+    height: 3.2rem;
+    padding: 0.8rem;
+  }
+
+  .ta-input {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

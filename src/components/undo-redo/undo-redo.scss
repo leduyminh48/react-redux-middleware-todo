@@ -1,0 +1,11 @@
+.ta-undo-redo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  &__btn {
+    font-size: 3rem;
+    background: none;
+    border: none;
+  }
+}
